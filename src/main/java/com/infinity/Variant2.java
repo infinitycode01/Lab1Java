@@ -1,8 +1,5 @@
 package com.infinity;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 public class Variant2 {
     public static int powForInteger(int base, int exponent) {
         if (exponent < 0) {
@@ -145,7 +142,6 @@ public class Variant2 {
         }
         return myMatrix;
     }
-
 
     public static void main(String[] args) {
         System.out.println("Start Lab1");
