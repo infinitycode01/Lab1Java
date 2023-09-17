@@ -40,16 +40,23 @@ public class Variant2Test {
     }
     @DataProvider
     public Object[][] caseTaskProvider() {
-        return new Object[][] { { 1, "Bad" }, { 2, "Unsatisfactory" }, { 3, "Satisfactory" }, { 4, "Good" }, { 5, "Excellent" }, { 98, "Error" } };
+        return new Object[][] {
+                { 1, "Bad" },
+                { 2, "Unsatisfactory" },
+                { 3, "Satisfactory" },
+                { 4, "Good" },
+                { 5, "Excellent" }
+        };
     }
+
     ///////////////////////////////////////
     @Test(dataProvider = "forTaskProvider")
-    public void forTaskTest(int A, int B, String result) {
+    public void forTaskTest(int A, int B, int[] result) {
         assertEquals(Variant2.forTask(A, B), result);
     }
     @DataProvider
     public Object[][] forTaskProvider() {
-        return new Object[][] { { 3, 5, "3 4 5 3" }, { -4, 0, "-4 -3 -2 -1 0 5" }, { 1, 2, "1 2 2" } };
+        return new Object[][] { { 3, 5, new int[] { 3, 4, 5, 3 } }, { -4, 0, new int[] { -4, -3, -2, -1, 0, 5 } }, { 1, 2, new int[] { 1, 2, 2 } } };
     }
     ///////////////////////////////////////
     @Test(dataProvider = "whileTaskProvider")

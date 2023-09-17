@@ -15,17 +15,18 @@ public class Variant2 {
     }
 
     /**
-     *
-     * @param kilogram
+     * @param kilogram .
      * @return tonn
      */
     public static int intTask(int kilogram) {
+        if (kilogram < 0) {
+            throw new IllegalArgumentException("Illegal argument");
+        }
         return kilogram / 1000;
     }
 
     /**
-     *
-     * @param A - intager
+     * @param A - integer
      * @return true if A is odd, else false
      */
     public static boolean booleanTask(int A) {
@@ -35,49 +36,43 @@ public class Variant2 {
     public static int ifTask(int number) {
         if (number > 0) {
             return number + 1;
-        } else {
-            return number - 2;
         }
+        return number - 2;
     }
+
 
     public static String caseTask(int grade) {
-        switch (grade) {
-            case (1):
-                return "Bad";
-            case (2):
-                return "Unsatisfactory";
-            case (3):
-                return "Satisfactory";
-            case (4):
-                return "Good";
-            case (5):
-                return "Excellent";
-            default:
-                return "Error";
-        }
+        return switch (grade) {
+            case (1) -> "Bad";
+            case (2) -> "Unsatisfactory";
+            case (3) -> "Satisfactory";
+            case (4) -> "Good";
+            case (5) -> "Excellent";
+            default -> throw new IllegalArgumentException("Allowed value of grades from 1 to 5");
+        };
     }
 
     /**
-     *
      * @param A (A < B)
-     * @param B
+     * @param B .
      * @return all integers between A - B and their count
      */
-    public static String forTask(int A, int B) {
+    public static int[] forTask(int A, int B) {
         int count = 0;
-        String result = "";
+        int[] result = new int[B - A + 2];
 
         for (int i = A; i <= B; i++) {
-            result += Integer.toString(i) + " ";
+            result[count] = i;
             count++;
         }
-        return result + count;
+        result[count] = count;
+
+        return result;
     }
 
     /**
-     *
-     * @param A
-     * @param B
+     * @param A (A > B)
+     * @param B .
      * @return number of segments B, placed on segment A
      */
     public static int whileTask(int A, int B) {
@@ -90,18 +85,14 @@ public class Variant2 {
     }
 
     /**
-     *
-     * @param rectangles
+     * @param rectangles .
      * @return the minimum area of a rectangle from input data
      */
     public static int minmaxTask(int[][] rectangles) {
         int minArea = Integer.MAX_VALUE;
 
-        for (int i = 0; i < rectangles.length; i++) {
-            int a = rectangles[i][0];
-            int b = rectangles[i][1];
-
-            int area = a * b;
+        for (int[] rectangle : rectangles) {
+            int area = rectangle[0] * rectangle[1];
 
             if (minArea > area) {
                 minArea = area;
@@ -112,12 +103,11 @@ public class Variant2 {
     }
 
     /**
-     *
-     * @param N
+     * @param N .
      * @return array containing powers of two
      */
     public static int[] arrayTask(int N) {
-        int[] myArray= new int[N];
+        int[] myArray = new int[N];
 
         for (int i = 0; i < N; i++) {
             myArray[i] = powForInteger(2, i + 1);
@@ -127,9 +117,8 @@ public class Variant2 {
     }
 
     /**
-     *
-     * @param M
-     * @param N
+     * @param M .
+     * @param N .
      * @return matrix where the elements of the J column have the value 5·J (J = 1, …, N).
      */
     public static int[][] matrixTask(int M, int N) {
@@ -145,5 +134,6 @@ public class Variant2 {
 
     public static void main(String[] args) {
         System.out.println("Start Lab1");
+        System.out.println(intTask(-54));
     }
 }

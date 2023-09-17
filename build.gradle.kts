@@ -11,8 +11,6 @@ repositories {
 
 dependencies {
     testImplementation("org.testng:testng:7.8.0")
-
-
 }
 
 
